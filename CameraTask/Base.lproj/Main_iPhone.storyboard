@@ -8,7 +8,7 @@
         <scene sceneID="BhV-ja-gfE">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="SQc-4G-cw8" customClass="CTRootTabbarViewController" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="boH-Er-p9n">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -80,10 +80,92 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="1Oj-cr-PZd"/>
+                    <connections>
+                        <segue destination="OOo-Vf-TQA" kind="push" identifier="CTSAnyToRecordAudio" id="2tz-2R-ZqE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2q-je-SNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="171" y="-406"/>
+        </scene>
+        <!--Audio Record View Controller-->
+        <scene sceneID="V3z-Hg-0I6">
+            <objects>
+                <viewController id="OOo-Vf-TQA" customClass="CTAudioRecordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qwE-0g-kRg"/>
+                        <viewControllerLayoutGuide type="bottom" id="jKo-kJ-GjW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rgY-cq-aLn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaG-Q4-Lp2">
+                                <rect key="frame" x="56" y="170" width="208" height="228"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaK-W3-BiD">
+                                        <rect key="frame" x="122" y="145" width="60" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.103243032" blue="0.22205753449999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="finishAction:" destination="OOo-Vf-TQA" eventType="touchUpInside" id="apj-7y-ijj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3T6-XN-jdt">
+                                        <rect key="frame" x="26" y="145" width="60" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.53592725610000003" green="1" blue="0.77871109130000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startAction:" destination="OOo-Vf-TQA" eventType="touchUpInside" id="U9k-w8-trz"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHg-bw-OkN">
+                                        <rect key="frame" x="20" y="86" width="169" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input a name here" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="S4z-9U-1AF">
+                                        <rect key="frame" x="26" y="33" width="156" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="OOo-Vf-TQA" id="EmH-hp-ZYa"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.8343497596080669" green="0.94262795038173919" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="228" id="HvD-G5-Z4e"/>
+                                    <constraint firstAttribute="width" constant="208" id="xEe-kt-5QJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="LaG-Q4-Lp2" secondAttribute="centerX" id="0pp-BP-llW"/>
+                            <constraint firstAttribute="centerY" secondItem="LaG-Q4-Lp2" secondAttribute="centerY" id="6dP-RO-3zD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1Tz-4H-c2N"/>
+                    <connections>
+                        <outlet property="_nameTextField" destination="S4z-9U-1AF" id="LzI-Ol-1zo"/>
+                        <outlet property="_timeLabel" destination="LHg-bw-OkN" id="S48-Qs-AhF"/>
+                        <outlet property="startButton" destination="3T6-XN-jdt" id="GGU-xt-orl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vSA-Yg-fVb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="631" y="-406"/>
         </scene>
         <!--Photo Table View Controller-->
         <scene sceneID="2Oc-hR-9mg">

@@ -138,10 +138,92 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="bW6-HY-nTF"/>
+                    <connections>
+                        <segue destination="wXd-pJ-MDK" kind="push" identifier="CTSAnyToRecordAudio" id="eHC-UZ-rAi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fb-fc-aTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="668" y="-1088"/>
+        </scene>
+        <!--Audio Record View Controller-->
+        <scene sceneID="5eE-GV-ZIc">
+            <objects>
+                <viewController id="wXd-pJ-MDK" customClass="CTAudioRecordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d7t-qk-pTj"/>
+                        <viewControllerLayoutGuide type="bottom" id="QMN-BE-rXa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZKz-L6-qSV">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdV-xh-DUX">
+                                <rect key="frame" x="280" y="398" width="208" height="228"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APd-Lv-hP9">
+                                        <rect key="frame" x="122" y="145" width="60" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.103243032" blue="0.22205753449999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="finishAction:" destination="wXd-pJ-MDK" eventType="touchUpInside" id="rZz-Qu-1Rm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6S-Na-mZW">
+                                        <rect key="frame" x="26" y="145" width="60" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.53592725610000003" green="1" blue="0.77871109130000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startAction:" destination="wXd-pJ-MDK" eventType="touchUpInside" id="3z1-PU-F4c"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmM-yX-fJj">
+                                        <rect key="frame" x="20" y="86" width="169" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input a name here" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="jKS-3p-WYE">
+                                        <rect key="frame" x="26" y="33" width="156" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="wXd-pJ-MDK" id="8sV-DR-Oyh"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83434975960000002" green="0.94262795040000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="4Sb-lt-xlQ"/>
+                                    <constraint firstAttribute="height" constant="228" id="mca-BA-Vvt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="TdV-xh-DUX" secondAttribute="centerY" id="etj-9a-FdA"/>
+                            <constraint firstAttribute="centerX" secondItem="TdV-xh-DUX" secondAttribute="centerX" id="t7h-lp-WLO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="n6e-2m-x8u"/>
+                    <connections>
+                        <outlet property="_nameTextField" destination="jKS-3p-WYE" id="0u3-Wi-lYw"/>
+                        <outlet property="_timeLabel" destination="jmM-yX-fJj" id="WTj-hm-ICG"/>
+                        <outlet property="startButton" destination="O6S-Na-mZW" id="WaQ-hS-cz7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9a-Mk-jFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1642" y="-1072"/>
         </scene>
         <!--Root Navigation Controller - Audio-->
         <scene sceneID="mfg-5U-Oty">

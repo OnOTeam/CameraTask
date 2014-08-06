@@ -8,6 +8,8 @@
 
 #import "CTAudioTableViewController.h"
 
+#import "CTItemModel.h"
+
 @interface CTAudioTableViewController ()<UIActionSheetDelegate>
 {
     NSMutableArray *_dataList;
@@ -31,6 +33,8 @@
     [super viewDidLoad];
     
     self.title = @"Audio";
+    
+    _dataList = [[NSMutableArray alloc] init];
 
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
     [addButton addTarget:self action:@selector(addAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -48,84 +52,43 @@
 
 - (void)addAction:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择" delegate:self cancelButtonTitle:@"退出" destructiveButtonTitle:nil otherButtonTitles:@"录音",@"从相册中选取", nil];
-    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+    [self audioRecordAction];
+}
+
+- (void)audioRecordAction
+{
+    [self performSegueWithIdentifier:@"CTSAnyToRecordAudio" sender:self];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [_dataList count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+    }
+    
+    CTItemModel *model = [_dataList objectAtIndex:indexPath.row];
+    
+    cell.imageView.image = [UIImage imageNamed:@"icon_audio.png"];
+    
+    cell.textLabel.text = model.name;
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"创建时间:%@,大小:%.3fM",@"2014-8-1",1.0];
     
     return cell;
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

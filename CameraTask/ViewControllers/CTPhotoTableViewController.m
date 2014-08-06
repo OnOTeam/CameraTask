@@ -94,7 +94,10 @@
     {
         //指定源的类型
         picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-                
+        
+        //在选定图片之前，用户可以简单编辑要选的图片。包括上下移动改变图片的选取范围，用手捏合动作改变图片的大小等。
+        picker.allowsEditing = YES;
+        
         //实现委托，委托必须实现UIImagePickerControllerDelegate协议，来对用户在图片选取器中的动作
         picker.delegate = self;
         

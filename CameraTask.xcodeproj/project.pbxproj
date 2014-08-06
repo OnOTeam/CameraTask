@@ -31,6 +31,8 @@
 		A234F15E1990CAA900085D7D /* icon_audio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A234F15B1990CAA900085D7D /* icon_audio@2x.png */; };
 		A234F15F1990CAA900085D7D /* icon_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A234F15C1990CAA900085D7D /* icon_photo@2x.png */; };
 		A234F1601990CAA900085D7D /* icon_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A234F15D1990CAA900085D7D /* icon_video@2x.png */; };
+		A284A41319920D80000EF104 /* CTAudioRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A284A41219920D80000EF104 /* CTAudioRecordViewController.m */; };
+		A284A415199223FE000EF104 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A284A414199223FE000EF104 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,9 @@
 		A234F15B1990CAA900085D7D /* icon_audio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_audio@2x.png"; sourceTree = "<group>"; };
 		A234F15C1990CAA900085D7D /* icon_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_photo@2x.png"; sourceTree = "<group>"; };
 		A234F15D1990CAA900085D7D /* icon_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_video@2x.png"; sourceTree = "<group>"; };
+		A284A41119920D80000EF104 /* CTAudioRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAudioRecordViewController.h; sourceTree = "<group>"; };
+		A284A41219920D80000EF104 /* CTAudioRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAudioRecordViewController.m; sourceTree = "<group>"; };
+		A284A414199223FE000EF104 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A284A415199223FE000EF104 /* AVFoundation.framework in Frameworks */,
 				A234F0F319908E6700085D7D /* CoreGraphics.framework in Frameworks */,
 				A234F0F519908E6700085D7D /* UIKit.framework in Frameworks */,
 				A234F0F119908E6700085D7D /* Foundation.framework in Frameworks */,
@@ -126,6 +132,7 @@
 		A234F0EF19908E6700085D7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A284A414199223FE000EF104 /* AVFoundation.framework */,
 				A234F0F019908E6700085D7D /* Foundation.framework */,
 				A234F0F219908E6700085D7D /* CoreGraphics.framework */,
 				A234F0F419908E6700085D7D /* UIKit.framework */,
@@ -222,6 +229,8 @@
 				A234F1481990A44E00085D7D /* CTRootNavigationController.m */,
 				A234F13E1990A36400085D7D /* CTAudioTableViewController.h */,
 				A234F13F1990A36400085D7D /* CTAudioTableViewController.m */,
+				A284A41119920D80000EF104 /* CTAudioRecordViewController.h */,
+				A284A41219920D80000EF104 /* CTAudioRecordViewController.m */,
 				A234F1411990A37700085D7D /* CTPhotoTableViewController.h */,
 				A234F1421990A37700085D7D /* CTPhotoTableViewController.m */,
 				A234F1441990A38500085D7D /* CTVideoTableViewController.h */,
@@ -351,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A234F1491990A44E00085D7D /* CTRootNavigationController.m in Sources */,
+				A284A41319920D80000EF104 /* CTAudioRecordViewController.m in Sources */,
 				A234F1431990A37700085D7D /* CTPhotoTableViewController.m in Sources */,
 				A234F1311990A27100085D7D /* CTRootTabbarViewController.m in Sources */,
 				A234F1461990A38500085D7D /* CTVideoTableViewController.m in Sources */,
