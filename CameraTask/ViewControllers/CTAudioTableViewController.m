@@ -42,6 +42,40 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSString *fileDir = [NSHomeDirectory() stringByAppendingPathComponent: [NSString stringWithFormat: @"Documents"]];
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    NSArray *tempArray = [manager contentsOfDirectoryAtPath:fileDir error:nil];
+    
+    [_dataList removeAllObjects];
+    for (NSString *name in tempArray) {
+        CTItemModel *model = [[CTItemModel alloc] init];
+        model.name = name;
+        [_dataList addObject:model];
+        
+        NSString *filePath = [fileDir stringByAppendingPathComponent:name];
+        
+        if([manager fileExistsAtPath:filePath isDirectory:NO]){
+            
+            NSDictionary * attributes = [manager attributesOfItemAtPath:filePath error:nil];
+        
+            // 计算大小
+            NSNumber *theFileSize = [attributes objectForKey:NSFileSize];
+            model.size = [theFileSize intValue] / 1000.0;
+            
+            // 创建时间
+            model.date = [attributes objectForKey:NSFileCreationDate];
+        }
+
+    }
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -85,8 +119,10 @@
     cell.imageView.image = [UIImage imageNamed:@"icon_audio.png"];
     
     cell.textLabel.text = model.name;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM-dd HH:mm:ss"];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"创建时间:%@,大小:%.3fM",@"2014-8-1",1.0];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"时间:%@,大小:%.3fK",[formatter stringFromDate:model.date] ,model.size];
     
     return cell;
 }
