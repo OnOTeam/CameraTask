@@ -32,6 +32,8 @@
     NSDate *_startDate;
     
     NSDate *_endDate;
+    
+    AVAudioPlayer   *_player;
 }
 @end
 
@@ -155,6 +157,7 @@
     avPlayer.volume = 2;
     [avPlayer prepareToPlay];
     [avPlayer play];
+    _player = avPlayer;
     
 }
 
